@@ -8,13 +8,14 @@ import json, uuid
 def string_to_byte(lst):
     return [ord(num) for num in lst]
 
-authToken = "ub55dc4316dcc3b92c6bac5609bedb42b:aWF0OiAxNzYyNTA3Njk1MTc3Cg==..s2XhgKQAKwpCqwfKA66YVW78ZV0="
+authToken = "Primary LINE or Token V3"
 LIFF_ID = '2008621645-PpZpgapO' #Don't edit if you don't know.
 HOST = "https://legy.line-apps.com"
 
-user_agent_line = 'Line/14.10.0'
+user_agent_line = 'Line/14.10.0' #Change to match token
+Application = 'ANDROID\t14.10.0\tAndroid OS\t13' #Change to match token
 user_agent = f'Mozilla/5.0 (Linux; Android 13; SM-A045F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/126.0.6478.133 Mobile Safari/537.36 {user_agent_line}'
-Application = 'ANDROID\t14.10.0\tAndroid OS\t13'
+
 
 client = httpx.Client(http2=True, verify=False)
 
