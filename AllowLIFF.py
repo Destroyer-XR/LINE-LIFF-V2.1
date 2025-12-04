@@ -123,6 +123,17 @@ def AllowLIFF():
     else:
         print("\x1b[1;33;40m>> \x1b[1;32mLIFF Already Allowed\x1b[0m")
 
+
+def revokeTokens(access_token):
+    """
+    Revoke LIFF Tokens
+    :param access_token: JWT Token
+    """
+    Bytes_liff = [130, 33, 2, 11, 114, 101, 118, 111, 107, 101, 84, 111, 107, 101, 110, 24] + string_to_byte(access_token) + [0, 0]
+    r = client.post(f'{HOST}/LIFF1', headers=headers, data=bytes(Bytes_liff))
+    print(f"\x1b[1;33;40m[{r.status_code}] >> \x1b[1;32mLIFF Tokens Revoked\x1b[0m")
+
+
 def send_liff_share_message(title, jsn, access_token):
     """
     Docstring for send_liff_share_message
@@ -150,7 +161,7 @@ def send_liff_share_message(title, jsn, access_token):
         headers=headers,
         data=json.dumps(payload)
     )
-    print(f"\x1b[1;33;40m[{resp.status_code}] \x1b[1;32;40m>> \x1b[1;37mLIFF Share Message Sent\x1b[0m")
+    print(f"\x1b[1;33;40m[{resp.status_code}] >> \x1b[1;32mLIFF Share Message Sent\x1b[0m")
     return resp
 
 if __name__ == "__main__":
@@ -170,5 +181,6 @@ if __name__ == "__main__":
     ]
   }
 }, jwt_token)
+    revokeTokens(jwt_token)
 
     
